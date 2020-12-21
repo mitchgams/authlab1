@@ -4,6 +4,9 @@ import * as passport from 'passport';
 
 import './middleware/localstrategy';
 import './middleware/bearerstrategy';
+import './utils/debug';
+
+
 
 const app = express();
 

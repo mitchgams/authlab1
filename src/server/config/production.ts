@@ -8,5 +8,8 @@ export default {
     },
     auth: {
         secret: process.env.SECRET
+    },
+    debug: {
+        isOn: true
     }
 }

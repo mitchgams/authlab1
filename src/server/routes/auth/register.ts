@@ -3,6 +3,7 @@ import DB from '../../db';
 
 import { HashPassword } from '../../utils/security/passwords';
 import { CreateToken } from '../../utils/security/tokens';
+import { debug } from '../../utils/debug';
 
 const router = express.Router();
 
@@ -12,6 +13,7 @@ router.post('/', async(req, res, next) => {
         user.password = HashPassword(req.body.password);
         let result: any = await DB.Users.insert(user);
         let token = await CreateToken({ userid: result.insertId });
+        debug.log(`email: ${user.email}, password: ${user.password} collected, account created token received: ${token}: src/server/routes/auth/register.ts`);
         res.json({
             token,
             role: 'guest',
