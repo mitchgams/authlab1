@@ -12,7 +12,6 @@ router.post('/', async(req, res, next) => {
         let user = req.body;
         user.password = HashPassword(req.body.password);
         let result: any = await DB.Users.insert(user);
-        
         let token = await CreateToken({ userid: result.insertId });
         debug.log(`email: ${user.email}, password: ${user.password} collected, account created token received: ${token}: src/server/routes/auth/register.ts`);
         res.json({

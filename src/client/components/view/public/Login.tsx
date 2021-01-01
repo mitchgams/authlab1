@@ -22,7 +22,7 @@ const Login: React.FC = () => {
          * admin. redirect to home page.
          */
         if(User && User.role === 'guest') {
-            history.push('/');
+           history.push('/');
         }
     }, []);
 
